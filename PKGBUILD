@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.glbinding.org/"
 license=('MIT')
 
-depends=('glfw' 'libgl' 'mesa' 'glm' 'glbinding-git')
+depends=('glfw' 'glm' 'glbinding-git')
 makedepends=('cmake' 'git')
 
 source=("$pkgname"::'git+https://github.com/cginternals/globjects.git')
@@ -39,5 +39,6 @@ build() {
 package() {
 	export DESTDIR="$pkgdir"
 	make -C build install
+	cp -r $srcdir/$pkgname/source/globjects/include/globjects $pkgdir/usr/include
 }
 
